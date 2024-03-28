@@ -71,3 +71,18 @@ $ kubectl apply -f app-2-dep.yaml
 ```shell
 $ minikube ip
 ```
+
+
+#### Troubleshooting tips
+
+```shell
+$ kubectl get pods -n ingress-nginx -l app.kubernetes.io/name=ingress-nginx
+```
+
+```shell
+$ kubectl logs ingress-nginx-controller-7c6974c4d8-hxnp9 -n ingress-nginx
+```
+
+```shell
+$ kubectl get namespace
+```
