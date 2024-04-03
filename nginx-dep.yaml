@@ -2,8 +2,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: nginx-dep
-  labels:
-    app: nginx
 spec:
   replicas: 5
   selector:
@@ -15,15 +13,14 @@ spec:
         app: nginx
     spec:
       containers:
-      - name: nginx-container
-        image: nginx:1.14.2
-        ports:
-        - containerPort: 8080
-        volumeMounts:
-        - name: nginx-config-volume
-          mountPath: /etc/nginx/nginx.conf
-          subPath: nginx.conf
+        - name: nginx
+          image: nginx:1.14.2
+          ports:
+            - containerPort: 80
+          volumeMounts:
+            - name: nginx-config
+              mountPath: /etc/nginx/conf.d
       volumes:
-      - name: nginx-config-volume
-        configMap:
-          name: nginx-configmap
+        - name: nginx-config
+          configMap:
+            name: nginx-configmap

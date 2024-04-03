@@ -2,8 +2,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: app-2-dep
-  labels:
-    app: app-2
 spec:
   replicas: 1
   selector:
@@ -15,7 +13,7 @@ spec:
         app: app-2
     spec:
       containers:
-      - name: app-2-container
-        image: ghcr.io/denoslab/ensf400-sample-app:v2
-        ports:
-        - containerPort: 8080
+        - name: app-2
+          image: ghcr.io/denoslab/ensf400-sample-app:v2
+          ports:
+            - containerPort: 8080
