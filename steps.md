@@ -70,6 +70,7 @@ $ kubectl apply -f app-2-dep.yaml
 $ curl -kL http://$(minikube ip)/
 ```
 
+---
 
 #### Troubleshooting tips
 
