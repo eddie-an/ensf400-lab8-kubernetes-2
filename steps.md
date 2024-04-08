@@ -33,9 +33,6 @@ $ kubectl apply -f nginx-configmap.yaml
 $ kubectl apply -f nginx-dep.yaml
 ```
 
-```shell
-$ curl -kL http://192.168.49.2/nginx
-```
 
 ### Create Resources for app 1
 
@@ -68,21 +65,14 @@ $ kubectl create -f app-2-ingress.yaml
 $ kubectl apply -f app-2-dep.yaml
 ```
 
+### Running app
 ```shell
-$ minikube ip
+$ curl -kL http://$(minikube ip)/
 ```
 
 
 #### Troubleshooting tips
 
 ```shell
-$ kubectl get pods -n ingress-nginx -l app.kubernetes.io/name=ingress-nginx
-```
-
-```shell
-$ kubectl logs ingress-nginx-controller-7c6974c4d8-hxnp9 -n ingress-nginx
-```
-
-```shell
-$ kubectl get namespace
+$ kubectl logs -l app.kubernetes.io/name=ingress-nginx -n ingress-nginx
 ```
