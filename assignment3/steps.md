@@ -48,6 +48,11 @@ $ kubectl create -f "app-2-ingress.yaml"
 $ curl -kL http://$(minikube ip)/
 ```
 
+Output looks like this:
+
+![Program Output](./output.png)
+
+
 ---
 
 #### Troubleshooting tips
