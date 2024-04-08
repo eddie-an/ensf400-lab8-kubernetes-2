@@ -7,6 +7,8 @@ $ minikube start
 $ minikube addons enable ingress
 ```
 
+Confirm that ingress is enabled
+
 ```shell
 $ kubectl get pods --all-namespaces -l app.kubernetes.io/name=ingress-nginx
 NAMESPACE       NAME                                        READY   STATUS      RESTARTS   AGE
@@ -15,55 +17,31 @@ ingress-nginx   ingress-nginx-admission-patch-j7tcm         0/1     Completed   
 ingress-nginx   ingress-nginx-controller-7c6974c4d8-6vdh6   1/1     Running     0          63s
 ```
 
-### Create Resources for nginx
+### Create deployments, services, and configmap
+Go to `assignment3` directory
+
+Run
 
 ```shell
-$ kubectl apply -f nginx-svc.yaml
+$ kubectl apply -f "*.yaml"
+```
+
+### Create ingress
+
+Change directory to `assignment3/ingress`
+
+```shell
+$ cd ingress
 ```
 
 ```shell
-$ kubectl create -f nginx-ingress.yaml
+$ kubectl create -f "app-1-ingress.yaml"
 ```
 
 ```shell
-$ kubectl apply -f nginx-configmap.yaml
+$ kubectl create -f "app-2-ingress.yaml"
 ```
 
-```shell
-$ kubectl apply -f nginx-dep.yaml
-```
-
-
-### Create Resources for app 1
-
-```shell
-$ kubectl apply -f app-1-svc.yaml
-```
-
-```shell
-$ kubectl create -f app-1-ingress.yaml
-```
-
-
-```shell
-$ kubectl apply -f app-1-dep.yaml
-```
-
-
-### Create Resources for app 2
-
-```shell
-$ kubectl apply -f app-2-svc.yaml
-```
-
-```shell
-$ kubectl create -f app-2-ingress.yaml
-```
-
-
-```shell
-$ kubectl apply -f app-2-dep.yaml
-```
 
 ### Running app
 ```shell
